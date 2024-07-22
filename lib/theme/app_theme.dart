@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  static ThemeData theme = ThemeData(
+  static ThemeData darkTheme = ThemeData(
     dividerTheme: const DividerThemeData(
       color: Colors.white10,
     ),
