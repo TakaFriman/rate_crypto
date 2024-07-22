@@ -7,6 +7,7 @@ class AppTheme {
     ),
     listTileTheme: const ListTileThemeData(iconColor: Colors.white),
     appBarTheme: const AppBarTheme(
+      surfaceTintColor: Colors.transparent,
       actionsIconTheme: IconThemeData(color: Colors.white),
       iconTheme: IconThemeData(color: Colors.white),
       backgroundColor: Color.fromARGB(255, 34, 34, 34),
