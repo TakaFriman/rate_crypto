@@ -28,7 +28,7 @@ class _CryptoListPageState extends State<CryptoListPage> {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: const Text('crypto app'),
+          title: const Text('Список криптовалют'),
         ),
         body: RefreshIndicator(
           onRefresh: () async {
