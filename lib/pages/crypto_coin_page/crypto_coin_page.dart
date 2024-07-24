@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rate_crypto/pages/crypto_coin_page/bloc/crypto_coin_bloc.dart';
@@ -5,40 +6,32 @@ import 'package:get_it/get_it.dart';
 import 'package:rate_crypto/pages/crypto_coin_page/widgets/details_data_crypto_widget.dart';
 import 'package:rate_crypto/pages/crypto_coin_page/widgets/price_crypto_widget.dart';
 import 'package:rate_crypto/repositories/crypto_coins/abstract_crypto_coins_repository.dart';
-import 'package:rate_crypto/repositories/models/crypto_coin_detailis.dart';
+import 'package:rate_crypto/repositories/models/crypto_coin.dart';
 
+@RoutePage()
 class CryptoCoinPage extends StatefulWidget {
-  const CryptoCoinPage({
-    super.key,
-  });
+  const CryptoCoinPage({super.key, required this.coin});
+
+  final CryptoCoin coin;
 
   @override
   State<CryptoCoinPage> createState() => _CryptoCoinPageState();
 }
 
 class _CryptoCoinPageState extends State<CryptoCoinPage> {
-  String? coinName;
   final _coinDetailis = CryptoCoinBloc(GetIt.I<AbstractCryptoCoinsRepository>());
-  // @override
-  // void initState() {
-  //   _coinDetailis.add(LoadCryptoCoin(currencyCode: coinName ?? 'BTC'));
-  //   super.initState();
-  // }
 
   @override
-  void didChangeDependencies() {
-    final args = ModalRoute.of(context)?.settings.arguments;
-    assert(args != null && args is String, 'You mast provide String args');
-    coinName = args as String;
-    _coinDetailis.add(LoadCryptoCoin(currencyCode: coinName ?? '...'));
-    super.didChangeDependencies();
+  void initState() {
+    _coinDetailis.add(LoadCryptoCoin(currencyCode: widget.coin.name));
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(coinName!),
+          title: Text(widget.coin.name),
         ),
         body: BlocBuilder<CryptoCoinBloc, CryptoCoinState>(
           bloc: _coinDetailis,

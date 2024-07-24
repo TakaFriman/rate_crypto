@@ -5,15 +5,26 @@ import 'package:talker_flutter/talker_flutter.dart';
 
 import 'theme/app_theme.dart';
 
-class RateCryptoApp extends StatelessWidget {
+class RateCryptoApp extends StatefulWidget {
   const RateCryptoApp({super.key});
+
+  @override
+  State<RateCryptoApp> createState() => _RateCryptoAppState();
+}
+
+class _RateCryptoAppState extends State<RateCryptoApp> {
+  final _appRouter = AppRouter();
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.darkTheme,
-      routes: routes,
-      navigatorObservers: [TalkerRouteObserver(GetIt.I<Talker>())],
+      routerConfig: _appRouter.config(
+        navigatorObservers: () => [
+          TalkerRouteObserver(GetIt.I<Talker>()),
+        ],
+      ),
     );
   }
 }
