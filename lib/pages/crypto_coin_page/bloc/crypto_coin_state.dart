@@ -9,12 +9,12 @@ class CryptoCoinState extends Equatable {
 
 class CryptoCoinInitial extends CryptoCoinState {
   @override
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [];
 }
 
 class CryptoCoinLoading extends CryptoCoinState {
   @override
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [];
 }
 
 class CryptoCoinLoaded extends CryptoCoinState {

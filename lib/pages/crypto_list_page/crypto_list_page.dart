@@ -6,6 +6,7 @@ import 'package:get_it/get_it.dart';
 import 'package:rate_crypto/pages/crypto_list_page/bloc/crypto_list_bloc.dart';
 import 'package:rate_crypto/pages/crypto_list_page/widgets/crypto_coin_tile.dart';
 import 'package:rate_crypto/repositories/crypto_coins/abstract_crypto_coins_repository.dart';
+import 'package:talker_flutter/talker_flutter.dart';
 
 class CryptoListPage extends StatefulWidget {
   const CryptoListPage({super.key});
@@ -29,6 +30,16 @@ class _CryptoListPageState extends State<CryptoListPage> {
         appBar: AppBar(
           centerTitle: true,
           title: const Text('Список криптовалют'),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => TalkerScreen(
+                            talker: GetIt.I<Talker>(),
+                          )));
+                },
+                icon: const Icon(Icons.document_scanner_outlined))
+          ],
         ),
         body: RefreshIndicator(
           onRefresh: () async {

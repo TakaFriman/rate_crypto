@@ -4,12 +4,12 @@ abstract class CryptoListBlocState extends Equatable {}
 
 class CryptoListBlocInitial extends CryptoListBlocState {
   @override
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [];
 }
 
 class CryptoListLoading extends CryptoListBlocState {
   @override
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [];
 }
 
 class CryptoListLoaded extends CryptoListBlocState {
