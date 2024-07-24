@@ -28,7 +28,6 @@ class _CryptoListPageState extends State<CryptoListPage> {
     final theme = Theme.of(context);
     return Scaffold(
         appBar: AppBar(
-          centerTitle: true,
           title: const Text('Список криптовалют'),
           actions: [
             IconButton(
@@ -42,6 +41,8 @@ class _CryptoListPageState extends State<CryptoListPage> {
           ],
         ),
         body: RefreshIndicator(
+          backgroundColor: Colors.transparent,
+          color: Colors.amber,
           onRefresh: () async {
             final completer = Completer();
             _cryptoListBloc.add(LoadCryptoList(completer: completer));
@@ -81,7 +82,10 @@ class _CryptoListPageState extends State<CryptoListPage> {
                   ],
                 ));
               }
-              return const Center(child: CircularProgressIndicator());
+              return const Center(
+                  child: CircularProgressIndicator(
+                color: Colors.amber,
+              ));
             },
           ),
         ));
