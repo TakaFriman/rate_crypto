@@ -13,8 +13,6 @@ import 'package:talker_dio_logger/talker_dio_logger.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
 Future<void> main() async {
-  // WidgetsFlutterBinding.ensureInitialized();
-
   final talker = TalkerFlutter.init();
   GetIt.I.registerSingleton(talker);
   GetIt.I<Talker>().debug('Talker start');
@@ -23,8 +21,8 @@ Future<void> main() async {
   dio.interceptors.add(TalkerDioLogger(
       talker: talker,
       settings: const TalkerDioLoggerSettings(
-        printResponseData: false,
-      )));
+          // printResponseData: false,
+          )));
 
   Bloc.observer = TalkerBlocObserver(
       talker: talker,

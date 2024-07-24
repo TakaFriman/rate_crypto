@@ -11,12 +11,12 @@ part 'crypto_list_state.dart';
 
 class CryptoListBloc extends Bloc<CryptoListBlocEvent, CryptoListBlocState> {
   CryptoListBloc(this.coinsRepository) : super(CryptoListBlocInitial()) {
-    on<LoadCryptoList>(load);
+    on<LoadCryptoList>(_load);
   }
 
   final AbstractCryptoCoinsRepository coinsRepository;
 
-  Future<void> load(
+  Future<void> _load(
     LoadCryptoList event,
     Emitter<CryptoListBlocState> emit,
   ) async {

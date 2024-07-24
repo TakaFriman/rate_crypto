@@ -18,7 +18,7 @@ class CryptoCoinLoading extends CryptoCoinState {
 }
 
 class CryptoCoinLoaded extends CryptoCoinState {
-  final CryptoCoinDetailis coin;
+  final CryptoCoin coin;
 
   const CryptoCoinLoaded({
     required this.coin,

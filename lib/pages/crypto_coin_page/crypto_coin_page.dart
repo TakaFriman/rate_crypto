@@ -39,17 +39,17 @@ class _CryptoCoinPageState extends State<CryptoCoinPage> {
           bloc: _coinDetailis,
           builder: (context, state) {
             if (state is CryptoCoinLoaded) {
-              final coinDetailis = state.coin;
-
+              final coin = state.coin;
+              final coinDetailis = coin.details;
               return Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Image.network(coinDetailis.imageUrl, width: 150, height: 150),
+                      Image.network(coinDetailis.fullImageUrl, width: 150, height: 150),
                       const SizedBox(height: 12),
-                      Text(coinDetailis.name),
+                      Text(coin.name),
                       const SizedBox(height: 12),
                       Text('${coinDetailis.priceInUSD.toStringAsFixed(7)} \$'),
                       const SizedBox(height: 16),
@@ -64,7 +64,7 @@ class _CryptoCoinPageState extends State<CryptoCoinPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const Text('Low 24 Hour'),
-                          Text('${coinDetailis.low24Hours.toStringAsFixed(7)} \$'),
+                          Text('${coinDetailis.low24Hour.toStringAsFixed(7)} \$'),
                         ],
                       ),
                     ],
