@@ -7,7 +7,6 @@ part 'crypto_coin_detailis.g.dart';
 @HiveType(typeId: 1)
 @JsonSerializable()
 class CryptoCoinDetailis extends Equatable {
-  
   @HiveField(0)
   @JsonKey(name: 'PRICE')
   final double priceInUSD;
